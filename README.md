@@ -1,4 +1,56 @@
- Đổi tên: sudo nano /etc/hostname
+DNS:
+bind/named.conf.local / options
+zone "vlute.com" {
+type master;
+file "/etc/bind/db.vlute.com";
+};
+zone "56,168,192.in-addr.arpa" {
+type master;
+file "/etc/bind/db.192";
+};
+bind/db.local db.vlute.com
+bind/db.127 192
+sudo nano /etc/resolv.conf
+search vltue.com
+WEB
+chown -R $USER:$USER /var/www/intranet
+chmod -R 755
+MYSQL
+alter user 'root'@'localhost' identified with mysql_native_password by 'password';
+mysql -u root -p
+create table acc(
+id int(6) auto_increment primary key,
+username varchar(30) not null
+);
+insert into acc
+value
+(null,"trung","123"),
+(null,"trung","123");
+
+RAID
+sudo mdadm -C /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+cat /proc/mdstat
+sudo mkfx.ext4 /dev/md0
+sudo mkdir raid0
+sudo mount /dev/md0 raid0
+df -h raid0
+
+OTHER
+sudo add-apt-repository ppa:oguzhaninan/stacer -y
+sudo apt-get update
+sudo apt-get install stacer -y
+
+PRINTER
+nano /etc/samba/smb.conf
+security = user
+sudo apt install cups
+nano /etc/cups/cupsd.conf
+port 631
+allow all
+ip:631/admin
+
+
+Đổi tên: sudo nano /etc/hostname
 Coppy 2 file vao thu muc K46:
  
 Sudo cp file1.txt file2.txt /home/fit/vlute/k64
